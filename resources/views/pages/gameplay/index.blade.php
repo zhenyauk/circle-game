@@ -39,7 +39,7 @@
                                     </form>
 
                                 @endif
-                                <checkstart gid="{{$game->id}}"/>
+                                <checkstart gid="{{$game->id ?? 1}}"/>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
 
 
                         <br>
-                        <users gid="{{$game->id}}" />
+                        <users gid="{{$game->id ?? 1}}" />
 
 
                     </div>

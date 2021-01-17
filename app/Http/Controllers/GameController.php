@@ -19,8 +19,12 @@ class GameController extends Controller
         ]);
     }
 
-    public function clear()
+    public function clear($id = null)
     {
+        if($id != null){
+            User::truncate();
+            Game::truncate();
+        }
         Answer::truncate();
         return redirect('/game/start');
     }

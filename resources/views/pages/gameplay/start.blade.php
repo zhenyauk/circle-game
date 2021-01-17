@@ -30,9 +30,11 @@
                            <div>Справа ти можеш бачити хто ще не закінчив ->>></div>
                         </div>
                         <div>
+                            @isset($game->id)
                             @if(auth()->id() === $game->id)
                                 <a href="" class="btn btn-danger">Закінчити примусово (якщо хтось завис в прямому чи переносному змісті)</a>
                             @endif
+                            @endisset
                         </div>
                         @else
                              <div class="card" >
@@ -56,7 +58,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <users gid="{{$game->id}}" />
+                    <users gid="{{$game->id ?? 1}}" />
                 </div>
 
 
