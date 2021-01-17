@@ -17,7 +17,7 @@ Route::prefix('game')->middleware(['auth'])->group(function () {
 
     Route::get('/', 'GameController@index')->name('game');
 
-    Route::get('/clear/{any?}', 'GameController@clear')->name('game');
+    Route::get('/clear/{any?}', 'GameController@clear')->name('game.clear');
 
     Route::get('/join/{game}', 'GameController@joinGame')->name('game.join');
 
