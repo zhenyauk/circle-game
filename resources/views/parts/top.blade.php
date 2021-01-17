@@ -10,7 +10,7 @@
                             <!-- logo begin -->
                             <!-- logo begin -->
                             <div id="logo">
-                                <a href="index.html">
+                                <a href="/">
                                     <img alt="" src="images/logo-1.png" />
                                 </a>
                             </div>
@@ -24,10 +24,10 @@
                                     <a href="/">Головна</a>
                                 </li>
                                 <li>
-                                    <a href="/rules">Правила</a>
+                                    <a href="/#">Правила</a>
                                 </li>
                                 <li>
-                                    <a href="/about">Залишити відгук\Пропозицію</a>
+                                    <a href="/#">Залишити відгук\Пропозицію</a>
                                 </li>
 
 
