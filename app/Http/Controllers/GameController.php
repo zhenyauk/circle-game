@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Game;
+use App\Models\Question;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +17,12 @@ class GameController extends Controller
         return view('pages.game.index', [
             'games' => Game::where('is_new', 1)->get()
         ]);
+    }
+
+    public function clear()
+    {
+        Answer::truncate();
+        return redirect('/game/start');
     }
 
     public function joinGame(Game $game)

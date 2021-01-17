@@ -21,4 +21,6 @@ class ResultsController extends Controller
             'questions' => Question::all()
         ]);
     }
+
+
 }
