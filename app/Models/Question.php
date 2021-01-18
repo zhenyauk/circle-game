@@ -14,11 +14,12 @@ class Question extends Model
         'sorting'
     ];
 
-    public function answers($id, $uid)
+    public function answers($id, $uid, $gid)
     {
         return $this->hasMany(Answer::class)
             ->where('user_id', $uid)
             ->where('question_id', $id)
+            ->where('game_id', $gid)
             ;
     }
 }

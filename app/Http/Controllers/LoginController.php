@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\_Helper;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,7 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         if( $user = User::whereName($request->name)->first() ){
+            _Helper::clearUser($user);
             $this->login($user);
         } else {
             $this->makeUser($request);
@@ -37,4 +39,6 @@ class LoginController extends Controller
        Auth::login($user);
        return $user;
     }
+
+
 }

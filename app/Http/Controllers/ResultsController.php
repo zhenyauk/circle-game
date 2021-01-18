@@ -16,10 +16,18 @@ class ResultsController extends Controller
     public function index()
     {
         return view('pages.gameplay.answers', [
-            'game' => Game::find(Auth::user()->current_game)->first(),
+            'game' => $this->finishGame(),
             'user' => Auth::user(),
             'questions' => Question::all()
         ]);
+    }
+
+    public function finishGame()
+    {
+        $game = Game::find(Auth::user()->current_game);
+        $game->restart = 0;
+        $game->save();
+        return $game;
     }
 
 

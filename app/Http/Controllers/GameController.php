@@ -19,6 +19,32 @@ class GameController extends Controller
         ]);
     }
 
+    public function start_again()
+    {
+        User::truncate();
+        Game::truncate();
+        Answer::truncate();
+        return redirect('/login');
+        $users_array = User::where('current_game', Auth::user()->current_game)->pluck('id')->toArray();
+
+        $answers = Answer::whereUserId(Auth::id())
+            ->whereGameId( Auth::user()->current_game )
+            ->whereIn('user_id', $users_array)
+            ->get();
+
+        foreach ($answers as $item){
+            $item->delete();
+        }
+
+        $game = Game::find(Auth::user()->current_game);
+        $game->restart = 1;
+        $game->start = 0;
+
+        $game->save();
+
+        return redirect('/game/start');
+    }
+
     public function clear($id = null)
     {
         if($id != null){

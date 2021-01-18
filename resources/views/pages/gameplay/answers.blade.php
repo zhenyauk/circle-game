@@ -21,7 +21,7 @@
                                 <div id="collapse-{{$loop->iteration}}" aria-labelledby="heading-{{$loop->iteration}}" data-parent="#accordion-1" class="collapse" style="background-size: cover;">
                                     <div class="card-body p-4" style="background-size: cover;">
                                         <p class="m-0">
-                                            {{$q->answers($q->id, $user->id)->first()->answer ?? 'Oops :('}}
+                                            {{$q->answers($q->id, $user->id, $game->id)->first()->answer ?? 'Oops :('}}
                                         </p>
                                     </div>
                                 </div>
@@ -34,6 +34,17 @@
                 </div>
             </div>
         </section>
+    <section class=" vertical-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12" style="background-size: cover;">
+                    @if($game->user_id === auth()->id())
+                        <a href="/game/playa-gain"><button class="btn btn-danger btn-lg">Грати ще раз</button></a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     </div>

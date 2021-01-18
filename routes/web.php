@@ -41,5 +41,6 @@ Route::prefix('game')->middleware(['auth'])->group(function () {
 
     # Results
     Route::get('/results', 'ResultsController@index')->name('results');
+    Route::get('/playa-gain', 'GameController@start_again')->name('again');
 
 });

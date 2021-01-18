@@ -55,11 +55,13 @@ class GameplayController extends Controller
         // $next_user =  $this->getActiveNextUser( Auth::user()->current_game, Auth::id(),$request->qid);
         $answer->user_id = $this->getRandomUser($request->qid);
         $answer->save();
+
         # UPDATE USER
         Auth::user()->current_question = $request->qid;
         Auth::user()->save();
 
         $page = intval($answer->question_id) + 1;
+
         if($page <= Question::get()->count()){
             return redirect('/game/start/' . $page);
         } else {
@@ -77,6 +79,7 @@ class GameplayController extends Controller
         $users_array = User::where('current_game', Auth::user()->current_game)
             ->pluck('id')
             ->toArray();
+
         $user_id = $this->shuffleAll($users_array);
 
         if(
@@ -85,6 +88,7 @@ class GameplayController extends Controller
                 ->whereGameId(Auth::user()->current_game)
                 ->first()
         ){
+
             #if isset result already
             return $this->check($qid);
         } else {
@@ -195,7 +199,7 @@ class GameplayController extends Controller
 
             # if find current user in array
             if($arr === $me){
-                dd($q);
+
 
                 if($arr === $last_user){
                     return min($users_array) ;

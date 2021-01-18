@@ -20,6 +20,7 @@ class CreateGamesTable extends Migration
             $table->string('name')->nullable();
             $table->string('compleat')->default(0)->nullable();
             $table->integer('is_new')->default(1)->nullable();
+            $table->integer('restart')->nullable()->default(0);
             $table->timestamps();
         });
     }
