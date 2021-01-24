@@ -7,8 +7,11 @@
                 <div v-for="user in users">
                     <div>{{user.name}} -
                         <span style="color:blueviolet" v-if="user.current_question == 6"> Готовий! </span>
-                        <span style="color:blueviolet" v-else-if="user.current_question == 0" > Готовий! </span>
+                        <span style="color:blueviolet" v-else-if="user.current_question == 0" > Старт! </span>
                         <span v-else>{{user.current_question}}</span>
+                        <span v-if="admin == 1">
+                            <a  style="font-weight:bold; color:red" :href="'/user/del/' + user.id">X</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -20,7 +23,8 @@
 <script>
 export default {
     props:[
-        'gid'
+        'gid',
+        'admin'
     ],
     data(){
         return {

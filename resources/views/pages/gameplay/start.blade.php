@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <users gid="{{$game->id ?? 1}}" />
+                    <users gid="{{$game->id ?? 1}}"    @if(auth()->id() === $game->id) admin="1" @else admin="0" @endif/>
                 </div>
 
 

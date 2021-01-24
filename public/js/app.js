@@ -2003,8 +2003,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['gid'],
+  props: ['gid', 'admin'],
   data: function data() {
     return {
       users: {}
@@ -37857,9 +37860,22 @@ var render = function() {
                   ])
                 : user.current_question == 0
                 ? _c("span", { staticStyle: { color: "blueviolet" } }, [
-                    _vm._v(" Готовий! ")
+                    _vm._v(" Старт! ")
                   ])
-                : _c("span", [_vm._v(_vm._s(user.current_question))])
+                : _c("span", [_vm._v(_vm._s(user.current_question))]),
+              _vm._v(" "),
+              _vm.admin == 1
+                ? _c("span", [
+                    _c(
+                      "a",
+                      {
+                        staticStyle: { "font-weight": "bold", color: "red" },
+                        attrs: { href: "/user/del/" + user.id }
+                      },
+                      [_vm._v("X")]
+                    )
+                  ])
+                : _vm._e()
             ])
           ])
         }),

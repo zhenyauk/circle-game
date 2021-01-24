@@ -99,4 +99,9 @@ class GameController extends Controller
         $game = Game::find();
         //
     }
+
+    public function userDel(User $user){
+        $user->delete();
+        return back();
+    }
 }

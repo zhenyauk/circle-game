@@ -74,7 +74,39 @@ class GameplayController extends Controller
 
     }
 
+
     public function getRandomUser($qid)
+    {
+
+        $users_array = User::where('current_game', Auth::user()->current_game)
+            ->pluck('id')
+            ->toArray();
+
+       // $user_id = $this->shuffleAll($users_array);
+
+        $answ = Answer::whereQuestionId($qid)
+            ->whereGameId(Auth::user()->current_game)
+            ->pluck('user_id')
+            ->toArray();
+
+
+
+        if(count($answ) <= 0){
+            $key = $this->shuffleAll($users_array);
+            //dd($key, $users_array);
+            return $users_array[$key];
+        } else{
+            $diff = array_diff( $users_array, $answ );
+            $user_id_key = $this->shuffleAll($diff);
+             return $diff[$user_id_key];
+        }
+
+
+    }
+
+
+
+    public function getRandomUser1($qid)
     {
         $users_array = User::where('current_game', Auth::user()->current_game)
             ->pluck('id')
@@ -98,6 +130,7 @@ class GameplayController extends Controller
         }
     }
 
+
     public function check($qid)
     {
         return $this->getRandomUser($qid);
@@ -105,8 +138,9 @@ class GameplayController extends Controller
 
     public function shuffleAll($users_array)
     {
-        $user = array_rand($users_array, 1);
-        return $user;
+        $u = array_rand($users_array, 1);
+        return $u;
+
     }
 
     public function waiting()

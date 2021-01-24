@@ -9,6 +9,7 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::get('/user/del/{id}', 'GameController@userDel');
 
 Route::view('login', 'pages.login')->name('login');
 Route::post('login', 'LoginController@store')->name('login.store');
@@ -22,6 +23,7 @@ Route::prefix('game')->middleware(['auth'])->group(function () {
     Route::get('/join/{game}', 'GameController@joinGame')->name('game.join');
 
     Route::get('/create', 'GameController@create')->name('game.create');
+
 
     Route::post('/store', 'GameController@store')->name('game.store');
 
